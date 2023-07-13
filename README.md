@@ -1,6 +1,6 @@
 # Appwrite Function Utils
 
-This repository contains a set of utility functions that can be used to build your Appwrite functions.
+This repository contains a set of utilities for Appwrite functions.
 
 ## Installation
 
