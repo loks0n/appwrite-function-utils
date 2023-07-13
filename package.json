@@ -2,6 +2,7 @@
   "name": "appwrite-function-utils",
   "version": "1.0.0",
   "description": "",
+  "private": "false",
   "files": [
     "dist"
   ],
@@ -26,7 +27,11 @@
     "format:check": "prettier --check .",
     "release": "dotenv release-it"
   },
-  "author": "",
+  "author": {
+    "name": "loks0n",
+    "email": "22452787+loks0n@users.noreply.github.com",
+    "url": "https://loks0n.dev"
+  },
   "license": "MIT",
   "devDependencies": {
     "dotenv-cli": "^7.2.1",
@@ -40,5 +45,8 @@
   "dependencies": {
     "micro": "^9.3.4",
     "yargs": "^17.7.2"
-  }
+  },
+  "keywords": [
+    "appwrite"
+  ]
 }
