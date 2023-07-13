@@ -19,24 +19,23 @@ Enabled type checking for your function handler by using the `Function` type.
 ```javascript
 /** type {import('appwrite-function-utils').Function} */
 const handler = async (context) => {
-    // Your function code
-};
+  // Your function code
+}
 
-export default handler;
+export default handler
 ```
 
 #### TypeScript
 
 ```typescript
-import { Function } from 'appwrite-function-utils';
+import { Function } from 'appwrite-function-utils'
 
 const handler: Function = async (context) => {
-    // Your function code
-};
+  // Your function code
+}
 
-export default handler;
+export default handler
 ```
-
 
 ### Dev Server
 
@@ -44,9 +43,9 @@ The `appwrite-function-utils dev` command will start a local server that will li
 
 ```json
 {
-    "scripts": {
-        "dev": "appwrite-function-utils dev src/main.js"
-    }
+  "scripts": {
+    "dev": "appwrite-function-utils dev src/main.js"
+  }
 }
 ```
 
@@ -58,9 +57,8 @@ npm install --save-dev nodemon
 
 ```json
 {
-    "scripts": {
-        "dev": "nodemon --watch src --exec \"appwrite-function-utils dev src/main.js\""
-    }
+  "scripts": {
+    "dev": "nodemon --watch src --exec \"appwrite-function-utils dev src/main.js\""
+  }
 }
 ```
-
