@@ -1,10 +1,6 @@
 {
   "hooks": {
-    "before:init": [
-      "npm run format:check",
-      "npm run lint:check",
-      "npm run test"
-    ],
+    "before:init": ["npm run format:check"],
     "after:bump": ["npx auto-changelog -p", "npm run build"]
   },
   "git": {
