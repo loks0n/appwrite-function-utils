@@ -1,0 +1,45 @@
+{
+  "name": "appwrite-function-utils",
+  "version": "1.0.0",
+  "description": "",
+  "files": [
+    "dist"
+  ],
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "exports": {
+    "require": "./dist/index.cjs",
+    "import": "./dist/index.js"
+  },
+  "types": "./dist/index.d.ts",
+  "bin": {
+    "appwrite-function-utils": "./bin/index.cjs"
+  },
+  "scripts": {
+    "build-fast": "tsup src/index.ts --format cjs,esm",
+    "build": "npm run build-fast -- --dts-resolve",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "prepublishOnly": "npm run build && publint",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "lint": "eslint --fix .",
+    "lint:check": "eslint .",
+    "release": "dotenv release-it"
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "dotenv-cli": "^7.2.1",
+    "prettier": "^3.0.0",
+    "publint": "^0.1.16",
+    "tsup": "^7.1.0",
+    "typescript": "^5.1.6",
+    "vitest": "^0.33.0"
+  },
+  "dependencies": {
+    "micro": "^9.3.4",
+    "yargs": "^17.7.2"
+  }
+}
