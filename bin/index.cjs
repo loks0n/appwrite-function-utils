@@ -1,4 +1,6 @@
 #!/usr/bin/env node
+require('dotenv').config()
+
 const fs = require('node:fs')
 const path = require('node:path')
 const yargs = require('yargs/yargs')
