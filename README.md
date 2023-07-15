@@ -37,6 +37,33 @@ const handler: Function = async (context) => {
 export default handler
 ```
 
+### Router
+
+The `router` function allows you to easily define routes for your function handler.
+
+```javascript
+import { router, HttpMethod } from 'appwrite-function-utils'
+
+export default router({
+  routes: [
+    {
+      path: '/ping',
+      methods: [HttpMethod.GET, HttpMethod.POST],
+      handler: async (context) => {
+        return context.res.send('Pong!')
+      }
+    }
+  ],
+  // override the default exception handler routes
+  exception: {
+    notFound: async (context) => {
+      return context.res.send('Oopsy whoopsy doopsy no findy windy', 404)
+    },
+  }
+})
+
+```
+
 ### Dev Server
 
 The `appwrite-function-utils dev` command will start a local server that will listen for incoming requests and execute your function handler. Assuming your function handler is located in `src/main.js`, add the following script to your `package.json` file:
