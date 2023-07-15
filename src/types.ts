@@ -9,11 +9,39 @@ interface AppwriteHttpHeaders extends IncomingHttpHeaders {
   'x-appwrite-user-id'?: string | undefined
 }
 
-interface HttpRequest {
+export interface HttpResponse {
+  body: string | Buffer
+  statusCode: number
+  headers: IncomingHttpHeaders
+}
+
+export enum HttpMethod {
+  GET = 'GET',
+  POST = 'POST',
+  PUT = 'PUT',
+  PATCH = 'PATCH',
+  DELETE = 'DELETE',
+  OPTIONS = 'OPTIONS',
+  HEAD = 'HEAD',
+}
+
+export enum HttpContentType {
+  JSON = 'application/json',
+  FORM = 'application/x-www-form-urlencoded',
+  XML = 'application/xml',
+  OCTET_STREAM = 'application/octet-stream',
+  YAML = 'application/x-yaml',
+  TEXT = 'text/plain',
+  HTML = 'text/html',
+  EVENT_STREAM = 'text/event-stream',
+  MULTIPART = 'multipart/form-data',
+}
+
+export interface HttpRequest {
   bodyString: string
   body: any
   headers: AppwriteHttpHeaders
-  method: 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE' | 'OPTIONS' | 'HEAD'
+  method: HttpMethod
   host: string
   scheme: 'http' | 'https'
   query: QueryParams
@@ -23,13 +51,7 @@ interface HttpRequest {
   path: string
 }
 
-interface HttpResponse {
-  body: string | Buffer
-  statusCode: number
-  headers: IncomingHttpHeaders
-}
-
-interface HttpResponseHelpers {
+export interface HttpResponseHelpers {
   send: (
     body: string | Buffer,
     statusCode?: number,
@@ -48,7 +70,7 @@ interface HttpResponseHelpers {
   ) => HttpResponse
 }
 
-interface Context {
+export interface Context {
   req: HttpRequest
   res: HttpResponseHelpers
   log: (message: any) => void
