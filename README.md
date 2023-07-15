@@ -51,17 +51,16 @@ export default router({
       methods: [HttpMethod.GET, HttpMethod.POST],
       handler: async (context) => {
         return context.res.send('Pong!')
-      }
-    }
+      },
+    },
   ],
   // override the default exception handler routes
   exception: {
     notFound: async (context) => {
       return context.res.send('Oopsy whoopsy doopsy no findy windy', 404)
     },
-  }
+  },
 })
-
 ```
 
 ### Dev Server
