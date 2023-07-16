@@ -7,44 +7,53 @@ import {
 } from './types'
 import { pathToRegexp } from 'path-to-regexp'
 
-export type RouterConfig = {
-  routes: {
-    path: string
-    methods?: HttpMethod[]
-    contentTypes?: HttpContentType[]
-    handler: Function
-  }[]
-  exception: {
-    notFound: Function
-    methodNotAllowed: Function
-    notAcceptable: Function
-    server: Function
-  }
+type RouteConfig = {
+  path: string
+  methods?: HttpMethod[]
+  contentTypes?: HttpContentType[]
+  handler: Function
 }
 
-const defaultConfig: RouterConfig = {
-  routes: [],
-  exception: {
-    notFound: (context) => {
-      return context.res.json('Not found', 404)
-    },
-    methodNotAllowed: (context) => {
-      return context.res.json('Method not allowed', 405)
-    },
-    notAcceptable: (context) => {
-      return context.res.json('Content type not acceptable', 406)
-    },
-    server: (context) => {
-      return context.res.json('Internal server error', 500)
-    },
+type ExceptionConfig = {
+  notFound: Function
+  methodNotAllowed: Function
+  notAcceptable: Function
+  server: Function
+}
+
+type RouterConfig = {
+  routes: RouteConfig[]
+  exception: ExceptionConfig
+}
+
+type PartialRouterConfig = {
+  routes?: RouteConfig[]
+  exception?: Partial<ExceptionConfig>
+}
+
+const defaultExceptions: ExceptionConfig = {
+  notFound: (context) => {
+    return context.res.json('Not found', 404)
+  },
+  methodNotAllowed: (context) => {
+    return context.res.json('Method not allowed', 405)
+  },
+  notAcceptable: (context) => {
+    return context.res.json('Content type not acceptable', 406)
+  },
+  server: (context) => {
+    return context.res.json('Internal server error', 500)
   },
 }
 
-export function router(config: RouterConfig) {
-  config = {
-    ...defaultConfig,
-    ...config,
-  }
+export function router(userConfig: PartialRouterConfig) {
+  const config = {
+    ...userConfig,
+    exception: {
+      ...defaultExceptions,
+      ...userConfig.exception,
+    },
+  } as RouterConfig
 
   return (context: Context): HttpResponse | Promise<HttpResponse> => {
     const matchedPaths = config.routes.filter((route) => {
