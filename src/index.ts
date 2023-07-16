@@ -8,4 +8,4 @@ export type {
   Context,
 } from './types'
 
-export { type RouterConfig, router } from './router'
+export { type PartialRouterConfig, router } from './router'

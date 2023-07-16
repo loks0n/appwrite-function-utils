@@ -26,7 +26,7 @@ type RouterConfig = {
   exception: ExceptionConfig
 }
 
-type PartialRouterConfig = {
+export type PartialRouterConfig = {
   routes?: RouteConfig[]
   exception?: Partial<ExceptionConfig>
 }
