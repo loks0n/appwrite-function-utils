@@ -1,11 +1,13 @@
 export type {
   Function,
-  HttpContentType,
-  HttpMethod,
   HttpRequest,
   HttpResponse,
   HttpResponseHelpers,
   Context,
 } from './types'
 
-export { type PartialRouterConfig, router } from './router'
+export { HttpContentType, HttpMethod } from './types'
+
+export type { PartialRouterConfig } from './router'
+
+export { router } from './router'
