@@ -38,7 +38,7 @@ export enum HttpContentType {
 }
 
 export interface HttpRequest {
-  bodyString: string
+  bodyRaw: string
   body: any
   headers: AppwriteHttpHeaders
   method: HttpMethod
